@@ -1,8 +1,31 @@
 import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Dashboard from './components/Dashboard'
+import Book from './components/Dashboard/Book'
+import Profile from './components/Dashboard/Profile'
+import Bookings from './components/Dashboard/Bookings'
+import SingleBooking from './components/Dashboard/Bookings/SingleBooking'
 
 function App() {
   return (
-    <div>App</div>
+ <BrowserRouter>
+ <Routes>
+  <Route path="" element={<Home/>}/>
+  <Route path="/login" element={<Login/>}/>
+  <Route path="/signup" element={<Signup/>}/>
+  <Route path="/dashboard" element={<Dashboard/>}>
+  <Route path="/dashboard/book" element={<Book/>}/>
+  <Route path="/dashboard/profile" element={<Profile/>}/>
+  <Route path="/dashboard/bookings">
+            <Route index element={<Bookings/>} />
+            <Route path=":id" element={<SingleBooking />} />
+  </Route>
+  </Route>
+ </Routes>
+ </BrowserRouter>
   )
 }
 
