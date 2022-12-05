@@ -2,7 +2,12 @@ import React from 'react'
 
 function Bookings() {
   return (
-    <div>Bookings</div>
+    <div className='grid grid-cols-2 gap-4'>
+      <div className='h-4 bg-slate-400'></div>
+      <div className='h-4 bg-slate-400'></div>
+      <div className='h-4 bg-slate-400'></div>
+      <div className='h-4 bg-slate-400'></div>
+    </div>
   )
 }
 
