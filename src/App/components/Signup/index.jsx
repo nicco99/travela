@@ -7,7 +7,8 @@ import "../css/LoginSignup.css"
 function SignupForm() {
 
         // add this to app together with login resource
-        const [user, setUser] = useState("")
+        const [user, setUser] = useState({})
+        const [error, setError] = useState({})
 const navigate = useNavigate()
     const [username, setUsername] = useState("")
     const [email, setEmail ] = useState("")
@@ -27,22 +28,19 @@ const navigate = useNavigate()
                 email,
                 p_number: phone,
                 password,
-                confirm_password: passwordConfirmation,
+                password_confirmation: passwordConfirmation,
             }),
         }).then((res) => {
             if (res.ok) {
                 res.json().then((user) => setUser(user));
+                console.log(user)
                 navigate("/dashboard")
             }else{
-                console.log(res)
-                res.json().then((error) => console.log(error));
+                res.json().then((error) => setError(error))
             }
         })
       
     }
-
-
-
 
 
 return (
@@ -116,7 +114,7 @@ return (
                     <span></span>              
                     <label>Password Confirmation</label>      
                 </div>        
-                    
+                    {error ? <p className='text-red-500'>{error.errors}</p>:null }
                     <input type="submit" value="SIGN IN" />
 
                 <div className="login_link">
