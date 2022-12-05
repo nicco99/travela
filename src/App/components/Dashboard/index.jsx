@@ -7,6 +7,7 @@ function Dashboard() {
     <div className='flex-initial bg-slate-400 h-screen'>
     <SideBar/>
     </div>
+    <div>logout</div>
    <div className='flex-initial w-full p-4'>
    <Outlet />
    </div>
