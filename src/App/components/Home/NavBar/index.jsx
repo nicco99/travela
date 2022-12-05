@@ -40,7 +40,7 @@ margin-right:auto;
 const Ul = styled.ul`
   background-color:#B1DAFF;
   align-items:center;
-  width:50vw;
+  width:30vw;
   margin-right: 25px;
   list-style: none;
   display: flex;
