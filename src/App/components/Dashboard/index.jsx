@@ -3,10 +3,13 @@ import { Outlet } from 'react-router-dom'
 import SideBar from './SideBar'
 function Dashboard() {
   return (
-   <div>
-    <hi>welcome dash</hi>
+   <div className='flex'>
+    <div className='flex-initial bg-slate-400 h-screen'>
     <SideBar/>
-    <Outlet />
+    </div>
+   <div className='flex-initial w-full p-4'>
+   <Outlet />
+   </div>
    </div>
   )
 }

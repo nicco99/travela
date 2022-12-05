@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { NavLink} from "react-router-dom"
+import { NavLink,useNavigate} from "react-router-dom"
 import "../css/LoginSignup.css"
 
 // {setUser} pass as prop to login function
 
 function Login( ) {
-
+const navigate = useNavigate()
     // add this to app together with login resource
     const [user, setUser] = useState("")
+    const [error, setError] = useState({})
     
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,7 +16,7 @@ function Login( ) {
 
     function submitHandler(e){
         e.preventDefault();
-        fetch("/login", {
+        fetch("http://localhost:3000/sessions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -23,7 +24,12 @@ function Login( ) {
             body: JSON.stringify({ email, password }),
         }).then((res) => {
             if (res.ok) {
-                res.json().then((user) => setUser(user));
+                res.json().then((user) => {
+                    setUser(user)
+                navigate("/dashboard")
+                });
+            } else {
+                console.log(res.json().then(error=>setError(error)))
             }
         })
     }
@@ -57,8 +63,9 @@ function Login( ) {
                     />
                     <span></span>
                     <label>Password</label>
+
                 </div>
-                        
+                    { error ? <p>{error.errors}</p>:null}
                     <input type="submit" value="Login" />
                 
                 <div className="signup_link">
