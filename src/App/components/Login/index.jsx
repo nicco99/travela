@@ -1,9 +1,73 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { NavLink} from "react-router-dom"
+import "../css/LoginSignup.css"
 
-function Login() {
-  return (
-    <div>Login</div>
-  )
+// {setUser} pass as prop to login function
+
+function Login( ) {
+
+    // add this to app together with login resource
+    const [user, setUser] = useState("")
+    
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+
+    function submitHandler(e){
+        e.preventDefault();
+        fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        }).then((res) => {
+            if (res.ok) {
+                res.json().then((user) => setUser(user));
+            }
+        })
+    }
+
+    return (
+        <div className='form-inner'>
+            <h1>Travela Login</h1> 
+
+            <form onSubmit={submitHandler}>      
+                <div className='form-group'>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        required="required"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <span></span>
+                    <label>Email</label>
+                </div>
+
+                <div className='form-group'>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        required="required"
+                        id="password" 
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                        
+                    <input type="submit" value="Login" />
+                
+                <div className="signup_link">
+                    Not a member?
+                    <NavLink to="/signup">Signup</NavLink>
+                </div>
+            </form>
+        </div>
+    )
 }
 
 export default Login
