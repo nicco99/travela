@@ -13,25 +13,14 @@ body {
   }
   
   
-  p{
-   font-weight: 400;
-    font-size: xx-large;
-    margin-left: 40px;
-  }
-  ul{
-    
-    background-color: #B1DAFF;
-    align-items:center;
-    width:50vw;
-    margin-right: 25px;
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
-    font-size:1.2rem;
-    border-radius: 50px;
-     box-shadow: 5px 2px  #888888;
-  }
+ .search{
+  padding: 20rem;
+  background-image: url("https://verbanoviaggi.com/wp-content/uploads/2017/12/istockphoto-636879522-170667a.jpg");
+  background-repeat: no-repeat ;
+  background-size: 65% 100%;
+  background-position: 50% 50%;
+  box-shadow: 1px 2px 10px 2px  #888888;
+  border-radius: 100px;
   
-  
-  
+ }
   
