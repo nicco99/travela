@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import { NavLink} from "react-router-dom"
+import { NavLink,useNavigate} from "react-router-dom"
 import "../css/LoginSignup.css"
 
 // {setUser} pass as prop to signup function
@@ -8,8 +8,8 @@ function SignupForm() {
 
         // add this to app together with login resource
         const [user, setUser] = useState("")
-
-    const [fullname, setFullName] = useState("")
+const navigate = useNavigate()
+    const [username, setUsername] = useState("")
     const [email, setEmail ] = useState("")
     const [phone, setPhone] = useState("")
     const [password, setPassword] = useState("");
@@ -17,23 +17,28 @@ function SignupForm() {
 
     function submitHandler(e){
         e.preventDefault()
-        fetch("/signup", {
+        fetch("http://localhost:3000/passengers", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                fullname,
+                username,
                 email,
-                phone,
+                p_number: phone,
                 password,
-                password_confirmation: passwordConfirmation,
+                confirm_password: passwordConfirmation,
             }),
         }).then((res) => {
             if (res.ok) {
                 res.json().then((user) => setUser(user));
+                navigate("/dashboard")
+            }else{
+                console.log(res)
+                res.json().then((error) => console.log(error));
             }
         })
+      
     }
 
 
@@ -48,14 +53,14 @@ return (
                 <div className='form-group'>
                     <input 
                         type="text" min="5"
-                        name="fullname" 
+                        name="username" 
                         required = "required"
                         autoComplete="off"   
-                        value={fullname}
-                        onChange={(e) => setFullName(e.target.value)}                    
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}                    
                     />
                     <span></span>
-                    <label>Full Name</label>
+                    <label>Username</label>
                 </div>
 
                 <div className='form-group'>
