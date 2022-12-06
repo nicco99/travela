@@ -13,7 +13,7 @@ function SideBar() {
             </Link>
 
             <Link
-              to=""
+              to="/dashboard"
               className="flex items-center p-2 text-base font-2xl  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 text-white hover:text-black">
               <svg
                 aria-hidden="true"
@@ -29,7 +29,7 @@ function SideBar() {
           </li>
           <li>
             <Link
-              to="view_bookings"
+              to="bookings"
               className="flex items-center p-2 text-base font-2xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700  text-white hover:text-black">
               <svg
                 aria-hidden="true"
@@ -45,7 +45,7 @@ function SideBar() {
           </li>
           <li>
             <Link
-              to="book_a_trip"
+              to="book"
               className="flex items-center p-2 text-base font-2xl rounded-lg dark:text-white hover:bg-gray-100  text-white hover:text-black">
               <svg
                 aria-hidden="true"
@@ -64,7 +64,7 @@ function SideBar() {
           </li>
           <li>
             <Link
-              to="user_profile"
+              to="profile"
               className="flex items-center p-2 text-base font-2xl rounded-lg dark:text-white hover:bg-gray-100 text-white hover:text-black">
               <svg
                 aria-hidden="true"
@@ -103,7 +103,7 @@ function SideBar() {
           <li>
             <Link
               to=""
-              className="flex items-center p-2 text-base font-2xl text-white hover:text-blacktext-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              className="flex items-center p-2 text-base font-2xl  text-white hover:text-blacktext-gray-900 rounded-lg dark:text-white hover:bg-gray-100 hover:text-black dark:hover:bg-gray-700">
               <svg
                 aria-hidden="true"
                 class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white dark:text-gray-400"
@@ -124,7 +124,7 @@ function SideBar() {
           <li>
             <Link
               to=""
-              className="flex items-center p-2 text-base font-2xl text-white hover:text-blacktext-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              className="flex items-center p-2 text-base font-2xl hover:text-black text-white hover:text-blacktext-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
               <svg
                 aria-hidden="true"
                 className="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
