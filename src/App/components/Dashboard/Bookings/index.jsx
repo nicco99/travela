@@ -14,6 +14,7 @@ useEffect(()=>{
   }
   )
 },[])
+
 let bookingList = bookings.map(booking =><div className='rounded-md bg-sky-100'>
   <p className='m-3 flex flex-row justify-evenly'><span className='text-violet-900'>Trip From: </span>{booking.trip.route.start} <span className='text-violet-9git00'>To: </span>{booking.trip.route.destination}</p>
   <p className='m-3 flex flex-row justify-evenly'><span className='text-lime-400'> The Driver's Phone Number is: </span><span>{booking.trip.bus.driver_number}</span> </p>
