@@ -31,7 +31,7 @@ padding:20px
 `
 const P = styled.p`
 padding:30px;
-font-weight:bold;
+font-weight:italics;
 font-size:larger`
 
 const Div = styled.div`
