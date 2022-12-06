@@ -33,17 +33,33 @@ function SingleBooking() {
         console.log(data)
       });
   }
+  const styling = "h-28 bg-blue-400 text-white rounded-md shadow-lg flex flex-col justify-around items-center mt-3"
   return (
     <div className='h-4/5 bg-sky-100 rounded shadow-md'>
-       <button
-            className="bg-blue-200 text-black active:bg-blue-500 
-      font-bold px-6 py-3 mt-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 float-right"
+      <div className='h-28 grid-cols-1'>
+        <h1 className='bg-sky-50  p-4 text-center text-3xl'>Welcome Client😊</h1>
+      </div>
+      <div className='grid sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 m-4'>
+        <div className={`${styling}`}>
+          <h1 className='font-2xl'>Amount paid for the trip</h1>
+          <span className='font-serif font-extrabold text-4xl'>2000</span>
+        </div>
+        <div className={`${styling}`}>
+          <p className='font-2xl' >Depature time</p>
+          <span className='font-serif font-extrabold text-4xl'>10:00am</span>
+        </div>
+        <div className={`${styling}`}>   
+          <button
+            className="bg-sky-900 px-4 text-white active:bg-blue-500 font-bold h-8 rounded hover:bg-white hover:text-black shadow hover:shadow-lg outline-none focus:outline-none "
             type="button"
             onClick={() => setShowModal(true)}>
             review
           </button>
+          </div>
+      </div>
+    
        {showModal ? (
-            <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none float-right">
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                   <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
@@ -61,7 +77,7 @@ function SingleBooking() {
                   <div className="relative p-6 flex-auto">
                     <form
                       onSubmit={(e) => handleReview(e)}
-                      className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full">
+                      className="bg-blue-400 shadow-md rounded px-8 pt-6 pb-8 w-full">
                       <label className="block text-black text-sm font-bold mb-1">
                         comment
                       </label>
@@ -79,7 +95,7 @@ function SingleBooking() {
                         setRatingValue={setRatingValue}
                       />
                       <button
-                        className="font-bold px-6 py-3 mt-3 rounded shadow hover:shadow-lg bg-blue-400"
+                        className="font-bold text-white px-6 py-3 mt-3 rounded shadow hover:shadow-lg bg-blue-900"
                         type="submit">
                         submit
                       </button>
@@ -89,10 +105,7 @@ function SingleBooking() {
               </div>
             </div>
           ) : null}
-          <div className='h-28 bg-sky-50 grid-cols-3 gap-3'>
-            <div className='bg-sky-50 h-14'></div>
-            <div className='bg-sky-100 h-14'></div>
-          </div>
+      
     </div>
   )
 }

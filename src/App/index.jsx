@@ -8,6 +8,7 @@ import Book from './components/Dashboard/Book'
 import Profile from './components/Dashboard/Profile'
 import Bookings from './components/Dashboard/Bookings'
 import SingleBooking from './components/Dashboard/Bookings/SingleBooking'
+import Welcome from './components/Dashboard/Welcome'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
   <Route path="/login" element={<Login/>}/>
   <Route path="/signup" element={<Signup/>}/>
   <Route path="/dashboard" element={<Dashboard/>}>
+    <Route path="" element={<Welcome/>}/>
   <Route path="/dashboard/book" element={<Book/>}/>
   <Route path="/dashboard/profile" element={<Profile/>}/>
   <Route path="/dashboard/bookings">
