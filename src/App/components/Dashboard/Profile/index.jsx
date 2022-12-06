@@ -1,9 +1,9 @@
 import React from 'react'
 
-function UserProfile() {
+function Profile() {
   return (
       <h1>Welcome, Beautiful</h1>
   )
 }
 
-export default UserProfile
+export default Profile

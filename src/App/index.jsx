@@ -7,7 +7,7 @@ import Dashboard from './components/Dashboard'
 import Book from './components/Dashboard/Book'
 import Bookings from './components/Dashboard/Bookings'
 import SingleBooking from './components/Dashboard/Bookings/SingleBooking'
-import UserProfile from './components/Dashboard/UserProfile'
+import Profile from './components/Dashboard/Profile'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
   <Route path="/signup" element={<Signup/>}/>
   <Route path="/dashboard" element={<Dashboard/>}>
   <Route path="/dashboard/book" element={<Book/>}/>
-  <Route path="/dashboard/userprofile" element={<UserProfile/>}/>
+  <Route path="/dashboard/profile" element={<Profile/>}/>
   <Route path="/dashboard/bookings">
             <Route index element={<Bookings/>} />
             <Route path=":id" element={<SingleBooking />} />
