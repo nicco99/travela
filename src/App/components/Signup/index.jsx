@@ -1,6 +1,9 @@
 import React, { useState} from 'react'
 import { NavLink,useNavigate} from "react-router-dom"
-import "../css/LoginSignup.css"
+import "../css/LoginSignup.css";
+
+
+
 
 // {setUser} pass as prop to signup function
 
@@ -123,6 +126,7 @@ return (
                 </div>
 
             </form>
+            
     </div>
 )
 }
