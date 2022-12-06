@@ -6,11 +6,9 @@ function SideBar() {
         <ul class="space-y-2">
           <li>
             <Link className="flex items-center py-4 px-1">
-              <img
-                src="https://thumbs.dreamstime.com/b/continuous-one-line-drawing-front-view-bus-stopped-bus-stop-waiting-passengers-to-get-off-then-223157349.jpg"
-                alt="logo"
-                className="w-20 mt-0 rounded-full"
-              />
+              <img className="rounded-full" src=
+                "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzC0u03UPMX9l65QhzsBXQflVqMrdkVhZXXbjF60SOtEdbM6J_" alt="bus" width="90px" />
+              
               <span className="font-semibold text-white text-lg">TRAVELA</span>
             </Link>
 
