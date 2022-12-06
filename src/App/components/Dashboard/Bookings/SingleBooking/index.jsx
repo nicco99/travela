@@ -1,10 +1,13 @@
 import React,{useState} from 'react'
+import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import Rating from "./Rating"
 function SingleBooking() {
   const [showModal, setShowModal] = useState(false);
   const [ratingValue, setRatingValue] = useState(0);
   const [formData, setFormData] = useState({});
+  const [review, setReview] = useState([])
+  const [modalReview, setModalReview] = useState(false)
   const navigate = useNavigate()
   const {id} = useParams()
  
@@ -13,6 +16,24 @@ function SingleBooking() {
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   }
+
+  useEffect(()=>{
+    fetch("http://localhost:3000/reviews")
+    .then(res=>{
+      if(res.ok){
+        res.json().then(data=>setReview(data))
+      }else{
+        console.log("no found")
+      }
+    })
+  },[])
+  console.log(review)
+function handleReviews() {
+console.log("you reviewed our trip thanks")
+}
+
+
+
   function handleReview(e) {
     e.preventDefault();
     const review = {
@@ -31,6 +52,7 @@ function SingleBooking() {
       .then((data) => {
         navigate(-1 + 1);
         console.log(data)
+        setTimeout(handleReviews,5000)
       });
   }
   const styling = "h-28 bg-blue-400 text-white rounded-md shadow-lg flex flex-col justify-around items-center mt-3"
@@ -53,7 +75,15 @@ function SingleBooking() {
             className="bg-sky-900 px-4 text-white active:bg-blue-500 font-bold h-8 rounded hover:bg-white hover:text-black shadow hover:shadow-lg outline-none focus:outline-none "
             type="button"
             onClick={() => setShowModal(true)}>
-            review
+            Leave a review
+          </button>
+          </div>
+          <div className={`${styling}`}>   
+          <button
+            className="bg-sky-900 px-4 text-white active:bg-blue-500 font-bold h-8 rounded hover:bg-white hover:outline-sky-900 hover:text-black shadow-xl outline-none focus:outline-none "
+            type="button"
+            onClick={handleReviews}>
+             view my reviews
           </button>
           </div>
       </div>
