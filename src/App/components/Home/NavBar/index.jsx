@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
@@ -13,9 +14,9 @@ function NavBar() {
               </Div>
 
               <Ul>
-                  <li>Home</li>
-                 <li>Log in</li>
-                 <li>Sign up</li>
+                  <Link to="/">Home</Link>
+                 <Link to="/login">Log in</Link>
+                 <Link to="/signup">Sign up</Link>
                </Ul>
          </Nav>
   </div> 
