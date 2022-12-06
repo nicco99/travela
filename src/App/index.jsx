@@ -10,6 +10,7 @@ import Bookings from './components/Dashboard/Bookings'
 import SingleBooking from './components/Dashboard/Bookings/SingleBooking'
 import BookTrip from './components/Dashboard/Book/BookTrip'
 
+
 function App() {
   return (
     <BrowserRouter>
