@@ -15,7 +15,7 @@ function SideBar() {
             </Link>
 
             <Link
-              to=""
+              to="/dashboard"
               className="flex items-center p-2 text-base font-2xl  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 text-white hover:text-black">
               <svg
                 aria-hidden="true"
@@ -31,7 +31,7 @@ function SideBar() {
           </li>
           <li>
             <Link
-              to="view_bookings"
+              to="bookings"
               className="flex items-center p-2 text-base font-2xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700  text-white hover:text-black">
               <svg
                 aria-hidden="true"
@@ -47,7 +47,7 @@ function SideBar() {
           </li>
           <li>
             <Link
-              to="book_a_trip"
+              to="book"
               className="flex items-center p-2 text-base font-2xl rounded-lg dark:text-white hover:bg-gray-100  text-white hover:text-black">
               <svg
                 aria-hidden="true"
@@ -66,7 +66,7 @@ function SideBar() {
           </li>
           <li>
             <Link
-              to="user_profile"
+              to="profile"
               className="flex items-center p-2 text-base font-2xl rounded-lg dark:text-white hover:bg-gray-100 text-white hover:text-black">
               <svg
                 aria-hidden="true"
