@@ -15,7 +15,7 @@ function Profile() {
 
   const details = () => {
     axios
-      .get("http://localhost:3000/bookings")
+      .get("http://localhost:3000/passengers")
       .then((response) => {
         console.log(response);
         setPassengers(response.data);
@@ -31,22 +31,21 @@ function Profile() {
       <div className="container">
         {passengers.map((passenger) => (
           <div className="card" key={passenger.id}>
-        <label className="flex flex-col w-1/2">Email:</label>
-            <input className="border rounded-md p-2" value={passenger.status}/>
+            <div>
+            <label className="flex flex-col w-1/2">Username:</label>
+            <input className="border rounded-md p-2" value={passenger.username} />
+            </div>
+            <div>
+            <label className="flex flex-col w-1/2">Email:</label>
+            <input className="border rounded-md p-2" value={passenger.email} />
+            </div>
+            <div>
             <label className="flex flex-col w-1/2">phone Number:</label>
-        <input className="border rounded-md p-2" value={passenger.status}/>
+            <input className="border rounded-md p-2" value={passenger.p_number} />
+            </div>
           </div>
         ))}
       </div>
-      
-      {/* <div className="flex flex-col w-1/2">
-        <label>Email:</label>
-        <input className="border rounded-md p-2" />
-      </div> */}
-      {/* <div className="flex flex-col w-1/2">
-        <label>phone Number:</label>
-        <input className="border rounded-md p-2" />
-      </div> */}
       <div className="flex flex-row w-1/2 justify-round">
         <button className="bg-blue-400 px-3 rounded-md">Update</button>
         <button className="bg-red-400 px-3 rounded-md">Delete</button>
