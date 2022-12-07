@@ -21,6 +21,7 @@ function Home() {
 }
 const Div = styled.div`
 display:flex;
+height: 10px;
 justify-content:space-between;
 margin-right:20rem;
 

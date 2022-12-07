@@ -9,7 +9,7 @@ import Profile from './components/Dashboard/Profile'
 import Bookings from './components/Dashboard/Bookings'
 import SingleBooking from './components/Dashboard/Bookings/SingleBooking'
 import BookTrip from './components/Dashboard/Book/BookTrip'
-
+import Welcome from './components/Dashboard/Welcome'
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />}>
+          <Route path='' element={<Welcome/>}/>
           <Route path="/dashboard/book" >
             <Route index element={<Book />} />
             <Route path=":id" element={<BookTrip />} />

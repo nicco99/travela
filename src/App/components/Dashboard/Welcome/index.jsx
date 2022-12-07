@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import "../../css/dashboard.css"
 
 
-function Table() {
+function Welcome() {
 
 const [user, setUser] = useState("");
 
@@ -127,4 +127,4 @@ return (
 
 
 
-export default Table
+export default Welcome
