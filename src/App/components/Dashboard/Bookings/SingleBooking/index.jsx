@@ -7,7 +7,6 @@ function SingleBooking() {
   const [ratingValue, setRatingValue] = useState(0);
   const [formData, setFormData] = useState({});
   const [review, setReview] = useState([])
-  const [modalReview, setModalReview] = useState(false)
   const navigate = useNavigate()
   const {id} = useParams()
  
@@ -19,24 +18,20 @@ function SingleBooking() {
 
   useEffect(()=>{
     fetch("http://localhost:3000/reviews")
-    .then(res=>{
-      if(res.ok){
-        res.json().then(data=>setReview(data))
-      }else{
-        console.log("no found")
-      }
-    })
+    .then(res=>res.json().then(data=>console.log(data)))
+  
   },[])
-  console.log(review)
+
 function handleReviews() {
-console.log("you reviewed our trip thanks")
+// let reviews =review.map(item=>item.booking_id == id.id) 
+console.log(review)
 }
 
 
 
   function handleReview(e) {
     e.preventDefault();
-    const review = {
+    const reviews = {
       comment: formData.comment,
       rating: ratingValue,
       booking_id: parseInt(id)
@@ -46,13 +41,11 @@ console.log("you reviewed our trip thanks")
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(review),
+      body: JSON.stringify(reviews),
     })
       .then((res) => res.json())
       .then((data) => {
         navigate(-1 + 1);
-        console.log(data)
-        setTimeout(handleReviews,5000)
       });
   }
   const styling = "h-28 bg-blue-400 text-white rounded-md shadow-lg flex flex-col justify-around items-center mt-3"

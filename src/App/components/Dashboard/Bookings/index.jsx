@@ -9,7 +9,7 @@ const [bookings ,setBooking] = useState([])
 useEffect(()=>{
   fetch("http://localhost:3000/bookings")
   .then(res =>res.json())
-  .then(data=>setBooking(data))
+  .then(data=>setBooking(bookings => data))
   .catch(e =>console.log(e.message))
 },[])
 
