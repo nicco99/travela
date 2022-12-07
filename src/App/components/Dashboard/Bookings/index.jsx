@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 function Bookings() {
 const [bookings ,setBooking] = useState([])
 const token = localStorage.getItem("jwt");
+const passenger = localStorage.getItem("passenger")
 
-
-
+console.log(passenger)
 
 useEffect(()=>{
   fetch("http://localhost:3000/bookings", {
@@ -24,7 +24,7 @@ useEffect(()=>{
   )
 },[])
 
-let bookingList = bookings.map(booking =><div className='rounded-md bg-sky-100'>
+let bookingList = bookings.filter(b=>`${b.passenger.id}`===passenger).map(booking =><div className='rounded-md bg-sky-100'>
   <p className='m-3 flex flex-row justify-evenly'><span className='text-violet-900'>Trip From: </span>{booking.trip.route.start} <span className='text-violet-9git00'>To: </span>{booking.trip.route.destination}</p>
   <p className='m-3 flex flex-row justify-evenly'><span className='text-lime-400'> The Driver's Phone Number is: </span><span>{booking.trip.bus.driver_number}</span> </p>
 <p className='m-3 flex flex-row justify-evenly'><span className='text-orange-400'> Bus Number Plate: </span>{booking.trip.bus.number_plate}</p>

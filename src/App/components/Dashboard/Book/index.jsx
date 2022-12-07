@@ -7,6 +7,7 @@ function Book({user}) {
   const[start, setStart] = useState('')
   const[destination, setDestination] = useState('')
   const token = localStorage.getItem("jwt");
+  
   useEffect(() => {
     fetch('http://localhost:3000/trips', {
       method: "GET",

@@ -7,7 +7,7 @@ import "../css/LoginSignup.css";
 
 // {setUser} pass as prop to signup function
 
-function SignupForm() {
+function Signup() {
 
         // add this to app together with login resource
         const [user, setUser] = useState({})
@@ -36,8 +36,9 @@ const navigate = useNavigate()
         }).then((res) => {
             if (res.ok) {
                 res.json().then((user) => setUser(user));
-                console.log(user)
-                navigate("/dashboard")
+                localStorage.setItem("jwt", user.jwt);
+                setUser(user)
+            navigate("/dashboard")
             }else{
                 res.json().then((error) => setError(error))
             }
@@ -131,4 +132,4 @@ return (
 )
 }
 
-export default SignupForm
+export default Signup

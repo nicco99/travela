@@ -18,13 +18,18 @@ function SingleBooking() {
   }
 
   useEffect(()=>{
-    fetch("http://localhost:3000/reviews")
-    .then(res=>res.json().then(data=>console.log(data)))
+    fetch("http://localhost:3000/reviews",{
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      }
+    })
+    .then(res=>res.json().then(data=>setReview(data)))
   
   },[])
 
 function handleReviews() {
-// let reviews =review.map(item=>item.booking_id == id.id) 
 console.log(review)
 }
 
@@ -48,6 +53,7 @@ console.log(review)
       .then((res) => res.json())
       .then((data) => {
         navigate(-1 + 1);
+        console.log(data)
       });
   }
   const styling = "h-28 bg-blue-400 text-white rounded-md shadow-lg flex flex-col justify-around items-center mt-3"

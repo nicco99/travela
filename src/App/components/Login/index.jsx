@@ -26,7 +26,10 @@ const navigate = useNavigate()
         }).then((res) => {
             if (res.ok) {
                 res.json().then((user) => {
+                    console.log(user)
                     localStorage.setItem("jwt", user.jwt);
+                    localStorage.setItem("passenger", `${user.passenger.id}`);
+
                     setUser(user)
                 navigate("/dashboard")
                 });

@@ -5,8 +5,11 @@ function BookTrip({user}) {
     const [noOfSeats, setSNoOfSeats] = useState(1)
     const[trip, setTrip] = useState({})
     const[route, setRoutes] = useState({})
+    const [pNumber,setPnumber]= useState({})
     const[bus, setBus] = useState({})
     const token = localStorage.getItem("jwt");
+  const passenger = localStorage.getItem("passenger");
+
     const id = useParams()
     function clickUp () {
         let newNumber = noOfSeats +1
@@ -37,8 +40,50 @@ function BookTrip({user}) {
 }
 
 , [])
+
+
+useEffect(()=>{
+    fetch(`http://localhost:3000/passengers/${parseInt(passenger)}`,{ method: "GET",
+headers: {
+    Authorization: `Bearer ${token}`,
+}}).then(r=>r.json()).then(data=>setPnumber(data.p_number))
+
+},[])
+console.log(pNumber)
 function handlePayment(){
-    console.log(trip)
+
+    fetch(`http://localhost:3000/transactions`, {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            phone: pNumber,
+            amount: trip.route.price
+        })
+    })
+    .then(res=>res.json()).then(data=>{
+        console.log(data)
+        handleBooking()
+})
+}
+
+function handleBooking(){
+    fetch("http://localhost:3000/bookings",{
+        method: "POST",
+        headers:{
+         "content-type": "application/json",
+         Authorization: `Bearer ${token}`,
+        },
+        body:JSON.stringify(
+            {
+            trip_id: id.id,
+            passenger_id: passenger,
+            status: "pending"
+            }
+        )
+    }).then(r=>r.json()).then(data=>console.log(data))
 }
 
   return (
@@ -154,7 +199,7 @@ function handlePayment(){
       <p className='text-lg sm:text-xl lg:text-3xl  leading-loose	'>NO REFUNDS TO BE MADE FOR LATE ARRIVALS</p>
     </div>
     <div className='flex justify-center mt-8 '>
-            <button onClick={handlePayment} className='w-24 bg-cyan-400	sm:rounded-lg sm:w-36 lg:w-48 lg:h-16 lg:text-2xl'>PAY</button>
+            <button onClick={()=>handlePayment()} className='w-24 bg-cyan-400	sm:rounded-lg sm:w-36 lg:w-48 lg:h-16 lg:text-2xl'>PAY</button>
     </div>
     </div>
 )
