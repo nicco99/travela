@@ -4,15 +4,13 @@ import { Link } from 'react-router-dom'
 function Bookings() {
 const [bookings ,setBooking] = useState([])
 
+
+
 useEffect(()=>{
   fetch("http://localhost:3000/bookings")
-  .then(res =>{
-    if(res.ok){
-     res.json().then(bookings =>setBooking(bookings))
-    }else
-  { console.log("there was an error")}
-  }
-  )
+  .then(res =>res.json())
+  .then(data=>setBooking(bookings => data))
+  .catch(e =>console.log(e.message))
 },[])
 
 let bookingList = bookings.map(booking =><div className='rounded-md bg-sky-100'>
