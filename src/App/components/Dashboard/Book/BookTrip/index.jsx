@@ -1,14 +1,12 @@
 import React,{useState} from 'react'
 import { useEffect } from 'react'
 import {useParams} from 'react-router-dom'
-function BookTrip() {
+function BookTrip({user}) {
     const [noOfSeats, setSNoOfSeats] = useState(1)
     const[trip, setTrip] = useState({})
     const[route, setRoutes] = useState({})
     const[bus, setBus] = useState({})
-
-
-
+    const token = localStorage.getItem("jwt");
     const id = useParams()
     function clickUp () {
         let newNumber = noOfSeats +1
@@ -24,7 +22,12 @@ function BookTrip() {
         }
     }
   useEffect(() => {
-    fetch(`http://localhost:3000/trips/${id.id}`)
+    fetch(`http://localhost:3000/trips/${id.id}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+    })
     .then((res) => res.json())
     .then((res) =>{
       setTrip(res)

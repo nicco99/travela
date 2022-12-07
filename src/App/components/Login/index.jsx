@@ -5,10 +5,10 @@ import "../css/LoginSignup.css";
 
 // {setUser} pass as prop to login function
 
-function Login( ) {
+function Login({setUser}) {
 const navigate = useNavigate()
     // add this to app together with login resource
-    const [user, setUser] = useState("")
+    // const [user, setUser] = useState("")
     const [error, setError] = useState({})
     
     const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ const navigate = useNavigate()
 
     function submitHandler(e){
         e.preventDefault();
-        fetch("http://localhost:3000/sessions", {
+        fetch("http://localhost:3000/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -26,6 +26,7 @@ const navigate = useNavigate()
         }).then((res) => {
             if (res.ok) {
                 res.json().then((user) => {
+                    localStorage.setItem("jwt", user.jwt);
                     setUser(user)
                 navigate("/dashboard")
                 });
