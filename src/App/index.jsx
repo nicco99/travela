@@ -7,12 +7,9 @@ import Dashboard from './components/Dashboard'
 import Book from './components/Dashboard/Book'
 import Bookings from './components/Dashboard/Bookings'
 import SingleBooking from './components/Dashboard/Bookings/SingleBooking'
-<<<<<<< HEAD
-import Profile from './components/Dashboard/Profile'
-=======
 import BookTrip from './components/Dashboard/Book/BookTrip'
+import Profile from './components/Dashboard/Profile'
 
->>>>>>> dfb4d5678b03ac475ae029ab05e51c18fb9cef82
 
 function App() {
   return (
