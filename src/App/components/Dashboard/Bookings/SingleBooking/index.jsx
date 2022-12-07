@@ -7,6 +7,7 @@ function SingleBooking() {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate()
   const {id} = useParams()
+  const token = localStorage.getItem("jwt");
  
   function handleChange(e) {
     const name = e.target.name;
@@ -23,6 +24,7 @@ function SingleBooking() {
     fetch("http://localhost:3000/reviews", {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${token}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(review),

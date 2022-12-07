@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function SideBar() {
+  const navigate = useNavigate()
   return (
     <aside className="w-80 sticky hidden sm:block" aria-label="Sidebar">
       <div class="overflow-y-auto py-auto  px-3 bg-blue-400  dark:bg-gray-800 h-screen rounded-md">
@@ -81,8 +82,11 @@ function SideBar() {
             </Link>
           </li>
           <li>
-            <Link
-              to="/logout"
+            <button 
+              onClick={() =>{ 
+                localStorage.clear()
+                 navigate('/login')
+              }}
               className="flex items-center p-2 text-base font-2xl  rounded-lg dark:text-white hover:bg-gray-100 text-white hover:text-black">
               <svg
                 aria-hidden="true"
@@ -96,7 +100,7 @@ function SideBar() {
                   clip-rule="evenodd"></path>
               </svg>
               <span className="flex-1 ml-3 whitespace-nowrap">Logout</span>
-            </Link>
+            </button>
           </li>
         </ul>
         <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">

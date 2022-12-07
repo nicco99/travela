@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import Trip from './Trip'
 import Login from '../../Login'
-function Book() {
+function Book({user}) {
   const[newTrip, setNewTrip] = useState([])
   const[trip, setTrip] = useState([])
-
   const[start, setStart] = useState('')
   const[destination, setDestination] = useState('')
-
-
-
+  const token = localStorage.getItem("jwt");
   useEffect(() => {
-    fetch('http://localhost:3000/trips')
+    fetch('http://localhost:3000/trips', {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then((res) => res.json())
     .then((res) =>{
       setTrip(res)
