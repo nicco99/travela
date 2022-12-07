@@ -122,7 +122,7 @@ return (
 
                 <div className="login_link">
                     Already have an account
-                    <NavLink to="/">Login</NavLink>
+                    <NavLink to="/login">Login</NavLink>
                 </div>
 
             </form>

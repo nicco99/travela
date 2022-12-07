@@ -3,9 +3,18 @@ import { Link } from 'react-router-dom'
 
 function Bookings() {
 const [bookings ,setBooking] = useState([])
+const token = localStorage.getItem("jwt");
+
+
+
 
 useEffect(()=>{
-  fetch("http://localhost:3000/bookings")
+  fetch("http://localhost:3000/bookings", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
   .then(res =>{
     if(res.ok){
      res.json().then(bookings =>setBooking(bookings))

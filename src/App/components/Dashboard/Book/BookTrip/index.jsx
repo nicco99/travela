@@ -1,14 +1,12 @@
 import React,{useState} from 'react'
 import { useEffect } from 'react'
 import {useParams} from 'react-router-dom'
-function BookTrip() {
+function BookTrip({user}) {
     const [noOfSeats, setSNoOfSeats] = useState(1)
     const[trip, setTrip] = useState({})
     const[route, setRoutes] = useState({})
     const[bus, setBus] = useState({})
-
-
-
+    const token = localStorage.getItem("jwt");
     const id = useParams()
     function clickUp () {
         let newNumber = noOfSeats +1
@@ -24,7 +22,12 @@ function BookTrip() {
         }
     }
   useEffect(() => {
-    fetch(`http://localhost:3000/trips/${id.id}`)
+    fetch(`http://localhost:3000/trips/${id.id}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+    })
     .then((res) => res.json())
     .then((res) =>{
       setTrip(res)
@@ -34,7 +37,9 @@ function BookTrip() {
 }
 
 , [])
-console.log(route)
+function handlePayment(){
+    console.log(trip)
+}
 
   return (
     <div className=' w-full'>
@@ -149,7 +154,7 @@ console.log(route)
       <p className='text-lg sm:text-xl lg:text-3xl  leading-loose	'>NO REFUNDS TO BE MADE FOR LATE ARRIVALS</p>
     </div>
     <div className='flex justify-center mt-8 '>
-            <button className='w-24 bg-cyan-400	sm:rounded-lg sm:w-36 lg:w-48 lg:h-16 lg:text-2xl'>PAY</button>
+            <button onClick={handlePayment} className='w-24 bg-cyan-400	sm:rounded-lg sm:w-36 lg:w-48 lg:h-16 lg:text-2xl'>PAY</button>
     </div>
     </div>
 )
