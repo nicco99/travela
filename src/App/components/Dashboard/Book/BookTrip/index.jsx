@@ -37,6 +37,10 @@ function BookTrip({user}) {
 }
 
 , [])
+function handlePayment(){
+    console.log(trip)
+}
+
   return (
     <div className=' w-full'>
            <div>
@@ -150,7 +154,7 @@ function BookTrip({user}) {
       <p className='text-lg sm:text-xl lg:text-3xl  leading-loose	'>NO REFUNDS TO BE MADE FOR LATE ARRIVALS</p>
     </div>
     <div className='flex justify-center mt-8 '>
-            <button className='w-24 bg-cyan-400	sm:rounded-lg sm:w-36 lg:w-48 lg:h-16 lg:text-2xl'>PAY</button>
+            <button onClick={handlePayment} className='w-24 bg-cyan-400	sm:rounded-lg sm:w-36 lg:w-48 lg:h-16 lg:text-2xl'>PAY</button>
     </div>
     </div>
 )

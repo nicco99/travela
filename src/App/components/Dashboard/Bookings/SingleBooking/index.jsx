@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
+import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import Rating from "./Rating"
 function SingleBooking() {
   const [showModal, setShowModal] = useState(false);
   const [ratingValue, setRatingValue] = useState(0);
   const [formData, setFormData] = useState({});
+  const [review, setReview] = useState([])
   const navigate = useNavigate()
   const {id} = useParams()
   const token = localStorage.getItem("jwt");
@@ -14,9 +16,23 @@ function SingleBooking() {
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   }
+
+  useEffect(()=>{
+    fetch("http://localhost:3000/reviews")
+    .then(res=>res.json().then(data=>console.log(data)))
+  
+  },[])
+
+function handleReviews() {
+// let reviews =review.map(item=>item.booking_id == id.id) 
+console.log(review)
+}
+
+
+
   function handleReview(e) {
     e.preventDefault();
-    const review = {
+    const reviews = {
       comment: formData.comment,
       rating: ratingValue,
       booking_id: parseInt(id)
@@ -27,12 +43,11 @@ function SingleBooking() {
         Authorization: `Bearer ${token}`,
         "content-type": "application/json",
       },
-      body: JSON.stringify(review),
+      body: JSON.stringify(reviews),
     })
       .then((res) => res.json())
       .then((data) => {
         navigate(-1 + 1);
-        console.log(data)
       });
   }
   const styling = "h-28 bg-blue-400 text-white rounded-md shadow-lg flex flex-col justify-around items-center mt-3"
@@ -55,7 +70,15 @@ function SingleBooking() {
             className="bg-sky-900 px-4 text-white active:bg-blue-500 font-bold h-8 rounded hover:bg-white hover:text-black shadow hover:shadow-lg outline-none focus:outline-none "
             type="button"
             onClick={() => setShowModal(true)}>
-            review
+            Leave a review
+          </button>
+          </div>
+          <div className={`${styling}`}>   
+          <button
+            className="bg-sky-900 px-4 text-white active:bg-blue-500 font-bold h-8 rounded hover:bg-white hover:outline-sky-900 hover:text-black shadow-xl outline-none focus:outline-none "
+            type="button"
+            onClick={handleReviews}>
+             view my reviews
           </button>
           </div>
       </div>

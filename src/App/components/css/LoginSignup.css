@@ -106,7 +106,7 @@ input[type="Submit"]:hover
     border: none;
 }
 
-.signup_link, .login_link
+.signup_link, .login_link, .view_booking
 {
     margin: 30px 0;
     text-align: center;
@@ -115,7 +115,8 @@ input[type="Submit"]:hover
 }
 
 .signup_link a,
-.login_link a
+.login_link a,
+.view_booking a
 {
     color: red;
     text-decoration: none;
@@ -125,7 +126,8 @@ input[type="Submit"]:hover
 }
 
 .signup_link a:hover,
-.login_link a:hover
+.login_link a:hover,
+.view_booking a:hover
 {
     text-decoration: underline;
 }

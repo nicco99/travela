@@ -6,6 +6,8 @@ const [bookings ,setBooking] = useState([])
 const token = localStorage.getItem("jwt");
 
 
+
+
 useEffect(()=>{
   fetch("http://localhost:3000/bookings", {
     method: "GET",

@@ -12,6 +12,7 @@ import BookTrip from './components/Dashboard/Book/BookTrip'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
+import Welcome from './components/Dashboard/Welcome'
 
 function App() {
   const [user, setUser] = useState([])
@@ -34,6 +35,7 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser}/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />}>
+          <Route path='' element={<Welcome/>}/>
           <Route path="/dashboard/book" >
             <Route index element={<Book user={user} />} />
             <Route path=":id" element={<BookTrip />} />

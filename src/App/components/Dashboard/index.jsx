@@ -44,4 +44,4 @@ function Dashboard({user, setUser}) {
   }
 }
 
-export default Dashboard
+export default Dashboard;
