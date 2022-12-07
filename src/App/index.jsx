@@ -5,10 +5,10 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Dashboard from './components/Dashboard'
 import Book from './components/Dashboard/Book'
-import Profile from './components/Dashboard/Profile'
 import Bookings from './components/Dashboard/Bookings'
 import SingleBooking from './components/Dashboard/Bookings/SingleBooking'
 import BookTrip from './components/Dashboard/Book/BookTrip'
+import Profile from './components/Dashboard/Profile'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
@@ -18,16 +18,6 @@ function App() {
   const [user, setUser] = useState([])
   const token = localStorage.getItem("jwt");
 
-
-  // useEffect(
-  //   fetch(`http://localhost:3000/passenger/${user.id}`, {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then((res) => res.json())
-  //   .then(res => setUser(res.data))
-  //   )
   return (
     <BrowserRouter>
       <Routes>
