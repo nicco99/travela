@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 function NavBar() {
   return (
     
-  <div className='navigation'> 
+  <div className='navigation hidden sm:block'> 
          <Nav>
               <Div>
                   <img src=
