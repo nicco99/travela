@@ -26,22 +26,31 @@ function Profile() {
   };
 
   return (
-    <div className="w-full flex flex-col grid grid-cols-1">
+    <div className="w-full flex flex-col grid grid-cols-1 self-center space-y-10">
       <div className="w-28 rounded-full h-28 bg-slate-400 items-center"></div>
-      <div className="container">
+      <div className="container ">
         {passengers.map((passenger) => (
           <div className="card" key={passenger.id}>
             <div>
-            <label className="flex flex-col w-1/2">Username:</label>
-            <input className="border rounded-md p-2" value={passenger.username} />
+              <label className="flex flex-col w-1/2 ">Username:</label>
+              <input
+                className="border rounded-md p-2"
+                value={passenger.username}
+              />
             </div>
             <div>
-            <label className="flex flex-col w-1/2">Email:</label>
-            <input className="border rounded-md p-2" value={passenger.email} />
+              <label className="flex flex-col w-1/2">Email:</label>
+              <input
+                className="border rounded-md p-2"
+                value={passenger.email}
+              />
             </div>
             <div>
-            <label className="flex flex-col w-1/2">phone Number:</label>
-            <input className="border rounded-md p-2" value={passenger.p_number} />
+              <label className="flex flex-col w-1/2">phone Number:</label>
+              <input
+                className="border rounded-md p-2"
+                value={passenger.p_number}
+              />
             </div>
           </div>
         ))}
@@ -55,3 +64,4 @@ function Profile() {
 }
 
 export default Profile;
+
