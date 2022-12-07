@@ -7,25 +7,34 @@ import Dashboard from './components/Dashboard'
 import Book from './components/Dashboard/Book'
 import Bookings from './components/Dashboard/Bookings'
 import SingleBooking from './components/Dashboard/Bookings/SingleBooking'
+<<<<<<< HEAD
 import Profile from './components/Dashboard/Profile'
+=======
+import BookTrip from './components/Dashboard/Book/BookTrip'
+
+>>>>>>> dfb4d5678b03ac475ae029ab05e51c18fb9cef82
 
 function App() {
   return (
- <BrowserRouter>
- <Routes>
-  <Route path="/" element={<Home/>}/>
-  <Route path="/login" element={<Login/>}/>
-  <Route path="/signup" element={<Signup/>}/>
-  <Route path="/dashboard" element={<Dashboard/>}>
-  <Route path="/dashboard/book" element={<Book/>}/>
-  <Route path="/dashboard/profile" element={<Profile/>}/>
-  <Route path="/dashboard/bookings">
-            <Route index element={<Bookings/>} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard/book" >
+            <Route index element={<Book />} />
+            <Route path=":id" element={<BookTrip />} />
+          </Route>
+          <Route path="/dashboard/booktrip" element={<BookTrip />} />
+          <Route path="/dashboard/profile" element={<Profile />} />
+          <Route path="/dashboard/bookings">
+            <Route index element={<Bookings />} />
             <Route path=":id" element={<SingleBooking />} />
-  </Route>
-  </Route>
- </Routes>
- </BrowserRouter>
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
