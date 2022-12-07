@@ -1,8 +1,107 @@
-# Getting Started with Create React App
+# travela
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#Demo">Demo</a></li>
+        <li><a href="#Future-implementations ">Installation</a></li>
+        <li><a href="# Contribution"> Contribution</a></li>
+        <li><a href="# contributors">Contributors</a></li>
+      </ul>
+    </li>
+  <ul>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+ </ul>
+</ol>
+</details>
 
-## Available Scripts
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+This is a front-end implementation of a transport system. It is a complete front-end site with several pages: The landing page, the login page, a sign-up page,dashboard page,reviews page and a bookings page. <br>
+Each page's UI and code was carried out by an individual group member.<br>
+The significance of this project is:
+<ol>
+<li>It gives the transport industry a digital brand image, which is important in this digital age</li>
+<li> Increase market reach by appealing to the user.
+</li>
+<li>The system also provides a platform to provide  services such as bookings,comfort,easy to use and other services that can attract users.</li>
+</ol>
+
+### Built With
+
+Several technologies have been used in the design and implementation of this website.
+The technologies are:
+<ol>
+<li>React Js</li>
+<li>Tailwind CSS</li>
+<li>Ruby on Rails</li>
+<li>Figma</li>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+These are the steps required to use this project:
+
+### Prerequisites
+
+NodeJS
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+  On windows PowerShell
+  ```
+  nvm install latest
+  ```
+ CSS require no installations as they can run on the web browser
+
+### Installation
+
+1. Clone the repo
+   git clone [git@github.com:nicco99/travela.git](https://github.com/nicco99/travela)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+## Future-implementations 
+
+- User to customer payment
+- Implement geolocation APIs to obtain current location.
+  
+  ## Contribution
+If you need to contribute to this project follow the steps below:<br>
+- Clone the repo(`git clone <repo link>`)
+- Create a branch where you will add changes (`git branch -b <branchname>`)
+- Add the changes (`git add .`)
+- Commit changes (`git commit -m"contributing changes"`)
+- Push your changes (`git push origin <branchname>`)
+
 
 In the project directory, you can run:
 
@@ -68,3 +167,134 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  
+## Code Samples
+```React
+    
+    <!-- LOGIN SECTION -->
+    import React, { useState } from 'react'
+import { NavLink,useNavigate} from "react-router-dom"
+import "../css/LoginSignup.css";
+
+
+// {setUser} pass as prop to login function
+
+function Login( ) {
+const navigate = useNavigate()
+    // add this to app together with login resource
+    const [user, setUser] = useState("")
+    const [error, setError] = useState({})
+    
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+
+    function submitHandler(e){
+        e.preventDefault();
+        fetch("http://localhost:3000/sessions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        }).then((res) => {
+            if (res.ok) {
+                res.json().then((user) => {
+                    setUser(user)
+                navigate("/dashboard")
+                });
+            } else {
+                console.log(res.json().then(error=>setError(error)))
+            }
+        })
+    }
+
+  ```
+      <!-- CSS PART OF THE ABOVE SECTION -->
+```css
+    .form-inner 
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px; 
+}
+
+.form-inner h1
+{
+    text-align: center;
+    padding: 0 0 20px 0;
+    font-size: 30px;
+    border-bottom: 1px solid rgba(127, 188, 241, 0.984);
+}
+
+.form-inner form 
+{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .form-group 
+{
+    position: relative;
+    border-bottom: 2px solid none;
+    margin: 30px 0;
+}
+
+.form-group input 
+{
+    width: 100%;
+    height: 40px;
+    padding: 0 5px;
+    font-size: 16px;
+    border: none;
+    background: rgba(127, 188, 241, 0.854);
+    border-radius: 50px;
+    outline: none;
+}
+
+.form-group label 
+{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    color: #000;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+```
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Contributors & Contact Info
+<ol>
+<li>Nicolas Njeru (https://github.com/nicco99)</li>      
+<li>Rhoda Gachimu (https://github.com/Rhoda-Gachimu)</li>
+<li>Philip Waruingi (https://github.com/littlephillips)</li>     
+<li>Tressie Muthuri (https://github.com/t-muthuri)</li>   
+<li>Isaac Sindiga (https://github.com/sindiga-dev)</li> 
+<li>Timothy Lenku (https://github.com/esipil)</li> 
+</ol>
+
+Project Link: [https://github.com/nicco99/travela]
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+## License
+### MIT License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+`[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
