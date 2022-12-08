@@ -26,8 +26,8 @@ function NavBar() {
 }
 const Nav = styled.nav`
 display:flex;
-justify-content:space-evenly;
-padding:20px
+justify-content:space-evenly; 
+padding:20px;
 
 `
 const P = styled.p`
@@ -42,13 +42,14 @@ margin-right:auto;
 const Ul = styled.ul`
   background-color:#B1DAFF;
   align-items:center;
-  width:30vw;
+  width:20vw;
+  height:5vh;
   margin-right: 25px;
   list-style: none;
   display: flex;
   justify-content: space-evenly;
   font-size:1.2rem;
-  border-radius: 50px;
+  border-radius: 30px;
   
   box-shadow: 5px 2px  #888888;
    `
