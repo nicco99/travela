@@ -9,7 +9,7 @@ function Book({ user }) {
   const token = localStorage.getItem("jwt");
 
   useEffect(() => {
-    fetch("http://localhost:3000/trips", {
+    fetch("/trips", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

@@ -11,7 +11,7 @@ function Profile() {
   const id = localStorage.getItem("passenger");
   const navigate = useNavigate()
   useEffect(() => {
-    fetch(`http://localhost:3000/passengers/${parseInt(id)}`, {
+    fetch(`/passengers/${parseInt(id)}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -37,7 +37,7 @@ function handleChange(e){
 }
 
 function handleDelete () {
-  fetch(`http://localhost:3000/passengers/${parseInt(id)}`, {
+  fetch(`/passenger/${parseInt(id)}`, {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
@@ -51,7 +51,7 @@ function handleDelete () {
 }
 
 function handleSave(){
-  fetch(`http://localhost:3000/passengers/${parseInt(id)}`, {
+  fetch(`/passengers/${parseInt(id)}`, {
     method: "PATCH",
     headers: {
       "content-type": "application/json",

@@ -25,7 +25,7 @@ function BookTrip() {
     }
   }
   useEffect(() => {
-    fetch(`http://localhost:3000/trips/${id.id}`, {
+    fetch(`/trips/${id.id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -40,7 +40,7 @@ function BookTrip() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/passengers/${parseInt(passenger)}`, {
+    fetch(`/passengers/${parseInt(passenger)}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ function BookTrip() {
   }, []);
   
   function handlePayment() {
-    fetch(`http://localhost:3000/transactions`, {
+    fetch(`/transactions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ function BookTrip() {
   }
 
   function handleBooking() {
-    fetch("http://localhost:3000/bookings", {
+    fetch("/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

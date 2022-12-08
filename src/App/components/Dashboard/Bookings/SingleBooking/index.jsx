@@ -34,7 +34,7 @@ function SingleBooking() {
   }
 
   useEffect(()=>{
-    fetch("http://localhost:3000/reviews",{
+    fetch("/reviews",{
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -60,7 +60,7 @@ console.log(review)
       rating: ratingValue,
       booking_id: parseInt(id)
     };
-    fetch("http://localhost:3000/reviews", {
+    fetch("/reviews", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

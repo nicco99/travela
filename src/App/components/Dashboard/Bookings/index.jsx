@@ -9,7 +9,7 @@ const passenger = localStorage.getItem("passenger")
 console.log(passenger)
 
 useEffect(()=>{
-  fetch("http://localhost:3000/bookings", {
+  fetch("/bookings", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,

@@ -21,7 +21,7 @@ const navigate = useNavigate()
 
     function submitHandler(e){
         e.preventDefault()
-        fetch("http://localhost:3000/passengers", {
+        fetch("/passengers", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
