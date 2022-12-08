@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/travela-app/static/css/main.f22fdb48.css",
+    "main.js": "/travela-app/static/js/main.7953e801.js",
+    "index.html": "/travela-app/index.html",
+    "main.f22fdb48.css.map": "/travela-app/static/css/main.f22fdb48.css.map",
+    "main.7953e801.js.map": "/travela-app/static/js/main.7953e801.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f22fdb48.css",
+    "static/js/main.7953e801.js"
+  ]
+}
