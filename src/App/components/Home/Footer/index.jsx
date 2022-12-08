@@ -1,8 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 function Footer() {
+    const [footer,setFooter] =useState(false)
     return (
-    <div className='bg-sky-400 h-100 flex justify-around absolute inset-x-0 bottom-0 p-8'>
+    <div className='bg-sky-400 h-100  flex justify-around absolute inset-x-0 bottom-0 p-8'>
+        <div>
+        <button onClick={()=>{setFooter(footer=>!footer)}} className='p-2 bg-sky-400 mt-3 ml-3 sm:block rounded-md'>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        </div>
+        {footer?<div className='bg-blue-400 rounded-md w-full h-auto p-3 m-3 flex flex-col justify-center items-center'>
       <div class="left">
                  <label className='font-bold text-2xl italic  '>Travela</label>
                   <p className='text-2xl italic'>When preparing to travel,
@@ -44,6 +51,7 @@ function Footer() {
                 </div>
          </div>
          </div>
+         </div>:null}
     </div>
 
     );
