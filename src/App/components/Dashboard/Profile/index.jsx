@@ -37,7 +37,7 @@ function handleChange(e){
 }
 
 function handleDelete () {
-  fetch(`/passenger/${parseInt(id)}`, {
+  fetch(`/passengers/${parseInt(id)}`, {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
