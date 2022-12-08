@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/travela/static/css/main.f22fdb48.css",
+    "main.js": "/travela/static/js/main.026bd81c.js",
+    "index.html": "/travela/index.html",
+    "main.f22fdb48.css.map": "/travela/static/css/main.f22fdb48.css.map",
+    "main.026bd81c.js.map": "/travela/static/js/main.026bd81c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f22fdb48.css",
+    "static/js/main.026bd81c.js"
+  ]
+}
