@@ -48,16 +48,15 @@
 }
 
 
-.box{
+/* .box{
     position: relative;
     width: 300px;
     height: 300px;
     line-height: 28px;
     justify-content: center;
     align-items: center;
-    background-color: #060c21;
     margin: 40px;
-}
+} */
 
 .box::before, .box::after
 {

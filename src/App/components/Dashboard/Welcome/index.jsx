@@ -17,53 +17,11 @@ return (
         <div className="loader"></div>
 
         <div className="welcome">
-                <h2>Welcome, <span>{user.name}</span></h2>
+                <h2 className='text-2xl'>Welcome, <span>{user.name}</span></h2>
         </div>
 
 
         <div className="dashboard">
-        <div className="box">
-        <div className="glass"></div>
-        <div className="content">
-            <h2>Security</h2>
-            <p>Security concerns</p>
-            <p>
-                oitrewdsfghjklytrszxcvno987rs
-                zxcvbnkytdsxcvbnmhgdxcvytrdf
-                oitrewdsfghjklytrszxcvno987rs
-                zxcvbnkytdsxcvbnmhgdxcvytrdf
-            </p>
-        </div>
-        </div>
-
-        <div className="box">
-        <div className="glass"></div>
-        <div className="content">
-            <h2>Comfort</h2>
-            <p>Why Travela stands out</p>
-            <p>
-                oitrewdsfghjklytrszxcvno987rs
-                zxcvbnkytdsxcvbnmhgdxcvytrdf
-                oitrewdsfghjklytrszxcvno987rs
-                zxcvbnkytdsxcvbnmhgdxcvytrdf
-            </p>
-        </div>
-        </div>
-
-        <div className="box">
-        <div className="glass"></div>
-        <div className="content">
-            <h2>Bus Condition</h2>
-            <p>why make a trip with us</p>
-            <p>
-                oitrewdsfghjklytrszxcvno987rs
-                zxcvbnkytdsxcvbnmhgdxcvytrdf
-                oitrewdsfghjklytrszxcvno987rs
-                zxcvbnkytdsxcvbnmhgdxcvytrdf
-            </p>
-        </div>
-        </div>
-
         <div className="container"> 
 		<div className="card">
 			<div className="box-dashboard">
@@ -113,7 +71,7 @@ return (
     </div>
 
     <div className="view_booking">
-        Already a member?
+        Ready to enjoy our trips?
     <NavLink to="/dashboard/bookings">View Booking</NavLink>
     </div>
     </div>

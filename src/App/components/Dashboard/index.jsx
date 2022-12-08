@@ -9,19 +9,6 @@ function Dashboard({user, setUser}) {
   const token = localStorage.getItem("jwt");
   const passenger = localStorage.getItem("passenger");
   const [modal, setModal] = useState(false);
-
-
-    // useEffect(
-    // fetch(`http://localhost:3000/passenger/`, {
-    //   method: "GET",
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // }).then((res) => res.json())
-    // .then(res => setUser(res.data))
-    // )
-  // console.log(user)
-  // console.log(token)
   if (token) {
     return (
       <div className='flex'>
@@ -32,7 +19,7 @@ function Dashboard({user, setUser}) {
       <div className="flex-initial w-full p-4 justify-around">
         <button
           onClick={() => setModal((modal) => !modal)}
-          className="p-3 hover:text-white sm:hidden fixed hover:bg-sky-900 m-1 mt-4 rounded-full">
+          className="p-3 hover:text-white sm:hidden fixed hover:bg-sky-900 outline text-sky-600 m-1 rounded-md mb-3">
           <svg
             class="w-6 h-6"
             fill="none"

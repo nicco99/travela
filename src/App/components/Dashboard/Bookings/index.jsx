@@ -31,7 +31,7 @@ let bookingList = bookings.filter(b=>`${b.passenger.id}`===passenger).map(bookin
 <p className='flex flex-row p-2 justify-around'><button className='bg-sky-500 rounded-md p-3 border'><Link to={`${booking.id}`}>More Details</Link></button></p>
 </div>)
   return (
-    <div className='grid grid-cols-2 gap-4'>
+    <div className='grid sm:grid-cols-2 gap-4'>
       {bookingList}
     </div>
   )
