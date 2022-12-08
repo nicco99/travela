@@ -1,6 +1,7 @@
-import React,{useEffect,useState} from 'react';
+import React,{useState} from 'react';
 import NavBar from './NavBar'
 import Search from './Search';
+import Footer from './Footer';
 // import Panel from './Panel';
 // import "../css/home.css";
 
@@ -20,11 +21,11 @@ function Home() {
 <div className='hover:bg-sky-300 px-3 rounded-md text-2xl text-white'>Home</div>
         </div>:null}
        <NavBar/>
-       <div className='bg-no-repeat h-screen w-full sm:w-3/5 flex justify-center items-center sm:h-3/5 shadow-lg rounded-md  m-auto bg-cover' style={{backgroundImage: `url("https://verbanoviaggi.com/wp-content/uploads/2017/12/istockphoto-636879522-170667a.jpg")`}} >
+       <div className='bg-no-repeat h-screen w-full sm:w-3/5 flex justify-center items-center sm:h-3/5 shadow-lg rounded-md  m-auto bg-contain' style={{backgroundImage: `url("https://verbanoviaggi.com/wp-content/uploads/2017/12/istockphoto-636879522-170667a.jpg")`}} >
      
        <Search/>
        </div>
-
+       <Footer/>
     </div>
     
   
