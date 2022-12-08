@@ -6,48 +6,52 @@ import { Link } from 'react-router-dom'
 function Trip({trip}) {
 
   const date = Date(trip.departure)
-  console.log(date)
+  let newDate = date.split(" ")
 
-  function handleClick () {
-    console.log("jhmjn,kjh")
-  }
+  let theDate = newDate.splice(1,2).join("-")
+  let time =   newDate[2]
   return (
     <div>
-        <Link to={`${trip.id}`} onClick={handleClick} >
-        <div className='h-12 sm:h-16 mx-4 lg:mx-36 mt-2 flex rounded-lg border '>
-  <div className='w-1/4 h-full '>
+        <Link to={`${trip.id}`} >
+        <div className='grid sm:grid-cols-6 gap-2 '>
+  <div className='flex flex-col items-center'>
     <div>
       <p className='text-xs sm:text-base lg:text-xl'>From</p>
     </div>
     <div>
-      <h3 className='text-sm  sm:text-xl lg:text-2xl text-center '>{trip.route.start}</h3>
+      <h3 className='text-sky-900'>{trip.route.start}</h3>
     </div>
   </div>
-  <div className='w-1/4 h-full '>
+  <div className='flex flex-col items-center'>
   <div>
       <p className='text-xs sm:text-base lg:text-xl '>To</p>
     </div>
     <div>
-      <h3 className='text-sm sm:text-xl lg:text-2xl  text-center'>{trip.route.destination}</h3>
+      <h3 className='text-sky-900'>{trip.route.destination}</h3>
     </div>
   </div>
-  <div className='w-1/4 h-full '>
+  <div className='flex flex-col items-center'>
+      <p>Date</p>
+     <span>{theDate}</span>
+    </div>
+  <div className='flex flex-col items-center'>
   <div>
-      <p className='text-xs sm:text-base lg:text-xl '>Depature</p>
+      <p className='text-xs sm:text-base lg:text-xl '>time</p>
     </div>
     <div>
-      <p className='text-xs'>{trip.departure}</p>
+    <span>{time}</span>
     </div>
   </div>
-  <div className='w-1/4 h-full '>
+  <div className='flex flex-col items-center'>
   <div>
       <p className='text-xs sm:text-base lg:text-xl '>Price</p>
     </div>
     <div>
-      <h3 className='text-sm sm:text-xl lg:text-2xl  text-center'>{trip.route.price}</h3>
+      <h3 className='text-sky-900'>{trip.route.price}</h3>
     </div>
   </div>
 </div>
+<hr></hr>
         </Link>
     </div>
   )

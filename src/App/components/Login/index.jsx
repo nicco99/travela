@@ -17,7 +17,7 @@ const navigate = useNavigate()
 
     function submitHandler(e){
         e.preventDefault();
-        fetch("http://localhost:3000/login", {
+        fetch("/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -26,7 +26,9 @@ const navigate = useNavigate()
         }).then((res) => {
             if (res.ok) {
                 res.json().then((user) => {
+                    console.log(user)
                     localStorage.setItem("jwt", user.jwt);
+                    localStorage.setItem("passenger", `${user.passenger.id}`);
                     setUser(user)
                 navigate("/dashboard")
                 });

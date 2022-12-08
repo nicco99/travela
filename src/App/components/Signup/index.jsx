@@ -7,7 +7,7 @@ import "../css/LoginSignup.css";
 
 // {setUser} pass as prop to signup function
 
-function SignupForm() {
+function Signup() {
 
         // add this to app together with login resource
         const [user, setUser] = useState({})
@@ -21,7 +21,7 @@ const navigate = useNavigate()
 
     function submitHandler(e){
         e.preventDefault()
-        fetch("http://localhost:3000/passengers", {
+        fetch("/passengers", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -36,8 +36,9 @@ const navigate = useNavigate()
         }).then((res) => {
             if (res.ok) {
                 res.json().then((user) => setUser(user));
-                console.log(user)
-                navigate("/dashboard")
+                // localStorage.setItem("jwt", user.jwt);
+                // localStorage.setItem("passenger", `${user.passenger.id}`);
+                navigate("/login")
             }else{
                 res.json().then((error) => setError(error))
             }
@@ -50,7 +51,7 @@ return (
     <div className='form-inner'>
         <h1>Travela SignUp</h1> 
 
-            <form onSubmit={submitHandler}>
+            <form >
                 <div className='form-group'>
                     <input 
                         type="text" min="5"
@@ -118,7 +119,7 @@ return (
                     <label>Password Confirmation</label>      
                 </div>        
                     {error ? <p className='text-red-500'>{error.errors}</p>:null }
-                    <input type="submit" value="SIGN IN" />
+                    <button className='outline text-sky-400 hover:bg-sky-400 hover:text-white rounded-lg p-2 ' onClick={submitHandler} type="button"  >SIGN IN</button>
 
                 <div className="login_link">
                     Already have an account
@@ -131,4 +132,4 @@ return (
 )
 }
 
-export default SignupForm
+export default Signup

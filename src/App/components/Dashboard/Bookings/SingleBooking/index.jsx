@@ -7,9 +7,25 @@ function SingleBooking() {
   const [ratingValue, setRatingValue] = useState(0);
   const [formData, setFormData] = useState({});
   const [review, setReview] = useState([])
+  const [notify,setNotify]= useState(false)
   const navigate = useNavigate()
   const {id} = useParams()
   const token = localStorage.getItem("jwt");
+
+
+
+  
+  const [alert, setAlert] = useState(true);
+      
+  useEffect(() => {
+    setTimeout(() => {
+      setAlert(false);
+    }, 3000);
+  }, []);     
+    
+
+
+
  
   function handleChange(e) {
     const name = e.target.name;
@@ -18,15 +34,22 @@ function SingleBooking() {
   }
 
   useEffect(()=>{
-    fetch("http://localhost:3000/reviews")
-    .then(res=>res.json().then(data=>console.log(data)))
+    fetch("/reviews",{
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      }
+    })
+    .then(res=>res.json().then(data=>setReview(data)))
   
   },[])
 
 function handleReviews() {
-// let reviews =review.map(item=>item.booking_id == id.id) 
 console.log(review)
 }
+
+
 
 
 
@@ -37,7 +60,7 @@ console.log(review)
       rating: ratingValue,
       booking_id: parseInt(id)
     };
-    fetch("http://localhost:3000/reviews", {
+    fetch("/reviews", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -47,12 +70,16 @@ console.log(review)
     })
       .then((res) => res.json())
       .then((data) => {
+        setNotify(notify=>!notify)
         navigate(-1 + 1);
       });
   }
   const styling = "h-28 bg-blue-400 text-white rounded-md shadow-lg flex flex-col justify-around items-center mt-3"
   return (
     <div className='h-4/5 bg-sky-100 rounded shadow-md'>
+      <div className='grid grid-'>
+
+      </div>
       <div className='h-28 grid-cols-1'>
         <h1 className='bg-sky-50  p-4 text-center text-3xl'>Welcome Client😊</h1>
       </div>
@@ -84,7 +111,7 @@ console.log(review)
       </div>
     
        {showModal ? (
-            <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none float-right">
+            <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                   <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
@@ -115,10 +142,13 @@ console.log(review)
                       <label className="block text-black text-sm font-bold mb-1">
                         rating out of 5
                       </label>
+                      <div>
                       <Rating
                         ratingValue={ratingValue}
                         setRatingValue={setRatingValue}
                       />
+                      </div>
+                     
                       <button
                         className="font-bold text-white px-6 py-3 mt-3 rounded shadow hover:shadow-lg bg-blue-900"
                         type="submit">
