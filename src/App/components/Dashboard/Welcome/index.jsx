@@ -5,8 +5,14 @@ import userContext from "../../context";
 import { useContext } from "react";
 function Welcome() {
 const {user} = useContext(userContext)
-  return (
-    <div className="App sm:block">
+  return (<>
+<div className="flex flex-col h-screen sm:hidden justify-center items-center">
+
+  <p className="font-serif text-3xl">welcome Client😊 we are happy u choose us we offer good services </p>
+  <p>place a booking and travel at your desired time </p>
+  <button className="x-5 outline text-sky-900 hover:bg-sky-900 hover:text-white text-2xl p-2 rounded-md">Book Now</button>
+</div>
+    <div className="App hidden sm:block">
       <div className="trips">Travela</div>
 
       <div className="loader"></div>
@@ -91,6 +97,7 @@ const {user} = useContext(userContext)
         <NavLink to="/dashboard/bookings">View Booking</NavLink>
       </div>
     </div>
+    </>
   );
 }
 

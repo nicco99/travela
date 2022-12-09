@@ -5,10 +5,10 @@ function Profile() {
   const [update, setUpdate] = useState(false);
   const {user} = useContext(userContext)
   const [newDetails, setNewDetails] = useState({});
-  const [change, setChange] = useState(false);
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
-
+  const [modal,setModal]=useState(false)
+const [error, setError] = useState(null)
   function handleUpdate() {
     setUpdate(true);
   }
@@ -32,12 +32,21 @@ function Profile() {
     )
       .then((r) => r.json())
       .then((data) => {
-        setChange(!change);
         localStorage.clear();
         navigate("/login");
       });
   }
 
+  function handleNotify(){
+    setUpdate(!update);
+    setModal(true)
+    setTimeout(reset,2000)
+  }
+
+function reset(){
+  setModal(false)
+}    
+  
   function handleSave() {
     fetch(
       `https://travela-backend-production.up.railway.app/passengers/${user.id}`,
@@ -50,21 +59,28 @@ function Profile() {
         body: JSON.stringify(newDetails),
       }
     )
-      .then((r) => r.json())
-      .then((data) => {
-        setChange(!change);
-        setUpdate(!update);
-      });
+      .then((res) => {
+        if(res.ok){
+          res.json().then((data)=>{
+            setUpdate(!update);
+            handleNotify()
+          })
+        }else{
+   res.json().then((data)=>{setError(data)})
+        }
+  })
   }
-
   return (
     <div className="w-full h-4/5 flex flex-col justify-center items-center">
+      
       {update ? (
         <div className="fixed w-full sm:w-1/2 bg-sky-100 rounded h-1/2">
           <div className="w-4/5 h-1/4 text-center font-mono text-2xl p-3">
             Update your details here
           </div>
+          {error?<span>{error.error}</span>:null}
           <div className="flex flex-col justify-center items-center">
+
             <label>Username:</label>
             <input
               onChange={(e) => handleChange(e)}
@@ -105,6 +121,7 @@ function Profile() {
       <div className="sm:w-4/5 text-2xl flex justify-center">
         Welcome {user.username}
       </div>
+      {modal?<div className="fixed h-28 bg-sky-900 rounded-md text-white flex flex-col items-center justify-center p-3"><span>details update sucessfully</span><span><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></span></div>:null}
       <div className="w-4/5">
         <div>
           <label className="flex flex-col w-full">Username:</label>
