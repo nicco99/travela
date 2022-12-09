@@ -68,6 +68,12 @@ function Book() {
           </div>
         </div>
       </div>
+      <div className="grid grid-cols-1 gap2 m-2">
+        <p className="text-sky-900 w-full text-5xl font-serif">Some routes we travel to</p>
+        <p className="w-full text-black text-2xl p-5 m-2">Nairobi - Mombasa</p>
+        <p className="w-full text-black text-2xl p-5 m-2">Nakuru - Nairobi</p>
+        <p className="w-full text-black text-2xl p-5 m-2">Mombasa - Nairobi</p>
+      </div>
     </div>
   );
 }

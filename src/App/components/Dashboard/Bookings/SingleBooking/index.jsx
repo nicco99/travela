@@ -6,50 +6,29 @@ function SingleBooking() {
   const [showModal, setShowModal] = useState(false);
   const [ratingValue, setRatingValue] = useState(0);
   const [formData, setFormData] = useState({});
-  const [review, setReview] = useState([])
+  const [booking,setBooking]=useState({})
   const [notify,setNotify]= useState(false)
   const navigate = useNavigate()
   const {id} = useParams()
   const token = localStorage.getItem("jwt");
 
-
-
-  
-  const [alert, setAlert] = useState(true);
-      
-  useEffect(() => {
-    setTimeout(() => {
-      setAlert(false);
-    }, 3000);
-  }, []);     
-    
-
-
-
- 
   function handleChange(e) {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   }
 
-  useEffect(()=>{
-    fetch("/reviews",{
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "content-type": "application/json",
-      }
-    })
-    .then(res=>res.json().then(data=>setReview(data)))
+  // useEffect(()=>{
+  //   fetch(`https://travela-backend-production.up.railway.app/reviews`,{
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //       "content-type": "application/json",
+  //     }
+  //   })
+  //   .then(res=>res.json().then(data=>setBooking(data)))
   
-  },[])
-
-function handleReviews() {
-console.log(review)
-}
-
-
+  // },[])
 
 
 
@@ -74,6 +53,11 @@ console.log(review)
         navigate(-1 + 1);
       });
   }
+
+
+
+console.log(booking)
+
   const styling = "h-28 bg-blue-400 text-white rounded-md shadow-lg flex flex-col justify-around items-center mt-3"
   return (
     <div className='h-4/5 bg-sky-100 rounded shadow-md'>
@@ -103,8 +87,7 @@ console.log(review)
           <div className={`${styling}`}>   
           <button
             className="bg-sky-900 px-4 text-white active:bg-blue-500 font-bold h-8 rounded hover:bg-white hover:outline-sky-900 hover:text-black shadow-xl outline-none focus:outline-none "
-            type="button"
-            onClick={handleReviews}>
+            type="button">
              view my reviews
           </button>
           </div>
