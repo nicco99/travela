@@ -85,7 +85,7 @@ console.log(review)
       </div>
       <div className='grid sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 m-4'>
         <div className={`${styling}`}>
-          <h1 className='font-2xl'>Amount paid for the trip</h1>
+          <h1 className='font-2xl'>Amount paid for the trip </h1>
           <span className='font-serif font-extrabold text-4xl'>2000</span>
         </div>
         <div className={`${styling}`}>
@@ -116,7 +116,7 @@ console.log(review)
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                   <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
                     <h3 className="text-3xl font=semibold">
-                      Rate our trip and bus
+                      please Rate our trip and bus 
                     </h3>
                     <button
                       className="bg-transparent border-0 text-black float-center"
