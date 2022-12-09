@@ -1,17 +1,18 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import userContext from "../../../context";
 function BookTrip() {
   const [noOfSeats, setSNoOfSeats] = useState(1);
-  const [client,setClient] = useState({})
+  const { user } = useContext(userContext);
   const [trip, setTrip] = useState({});
   const [route, setRoutes] = useState({});
-  const [pNumber, setPnumber] = useState({});
+  const navigate = useNavigate()
   const [bus, setBus] = useState({});
+  const [loader, setLoader] = useState(false);
   const token = localStorage.getItem("jwt");
-  const passenger = localStorage.getItem("passenger");
-
-  const id = useParams();
+  const {id} = useParams();
   function clickUp() {
     let newNumber = noOfSeats + 1;
     setSNoOfSeats(newNumber);
@@ -25,7 +26,7 @@ function BookTrip() {
     }
   }
   useEffect(() => {
-    fetch(`https://travela-backend-production.up.railway.app/trips/${id.id}`, {
+    fetch(`/trips/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -33,24 +34,18 @@ function BookTrip() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setTrip(res);
+        setTrip(trip=>res);
         setRoutes(res.route);
         setBus(res.bus);
       });
-  }, []);
+  },[])
 
-  useEffect(() => {
-    fetch(`https://travela-backend-production.up.railway.app/trips/passengers/${parseInt(passenger)}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((r) => r.json())
-      .then((data) => setClient(data));
-  }, []);
-  
+ function handleLoader(){
+  setTimeout(setLoader(loader=>!loader),2000)
+ }
+
   function handlePayment() {
+    setLoader(loader=>!loader)
     fetch(`/transactions`, {
       method: "POST",
       headers: {
@@ -58,18 +53,18 @@ function BookTrip() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        phone: client.p_number,
+        phone: user.p_number,
         amount: trip.route.price,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         handleBooking();
       });
   }
 
   function handleBooking() {
+    handleLoader()
     fetch("/bookings", {
       method: "POST",
       headers: {
@@ -77,15 +72,14 @@ function BookTrip() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        trip_id: id.id,
-        passenger_id: passenger,
+        trip_id: trip.id,
+        passenger_id: user.id,
         status: "pending",
       }),
     })
       .then((r) => r.json())
-      .then((data) => console.log(data));
+      .then((data) => navigate("/dashboard/bookings"));
   }
-
   const date = Date(trip.departure);
   let newDate = date.split(" ");
 
@@ -176,12 +170,12 @@ function BookTrip() {
         <div className="flex flex-col h-28 bg-sky-400 text-white rounded-md shadow-md">
           <div className="grid grid-cols-2 p-auto">
             <h3 className="">phone number</h3>
-            <h1 className="">{client.p_number}</h1>
+            <h1 className="">{user.p_number}</h1>
           </div>
           <div className="grid grid-cols-2 p-auto">
             <h3 className="text-white p-auto rounded-md">PASSENGER</h3>
             <h1 className="text-xs sm:text-base lg:text-2xl">
-              {client.username}
+              {user.username}
             </h1>
           </div>
         </div>
@@ -201,7 +195,9 @@ function BookTrip() {
         <button
           onClick={() => handlePayment()}
           className="w-24 outline hover:text-white mb-5 hover:bg-cyan-400 text-cyan-400 rounded-lg sm:w-36 lg:w-48 lg:h-16 lg:text-2xl">
-          PAY
+          {loader?<div><div class="animate-spin h-5 w-5 mr-3 border-2 rounded-full border-black" viewBox="0 0 24 24">
+  
+  </div><span>Processing...</span></div>:<span>PAY</span>}
         </button>
       </div>
     </div>

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Trip from "./Trip";
+import userContext from "../../context";
 import Login from "../../Login";
-function Book({ user }) {
+function Book() {
   const [newTrip, setNewTrip] = useState([]);
   const [trip, setTrip] = useState([]);
+  const {user} = useContext(userContext)
   const [start, setStart] = useState("");
   const [destination, setDestination] = useState("");
   const token = localStorage.getItem("jwt");
@@ -20,11 +22,11 @@ function Book({ user }) {
         setTrip(res);
       });
   }, []);
-
+  
   function handleClick() {
     let filteredArr = trip.filter(
       (trip) =>
-        trip.route.start.toUpperCase() == start.toUpperCase() && trip.route.destination.toUpperCase() == destination.toUpperCase()
+        trip.route.start.toUpperCase() === start.toUpperCase() && trip.route.destination.toUpperCase() === destination.toUpperCase()
     );
     setNewTrip(filteredArr);
   }
