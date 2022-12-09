@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  
+ .search{
+  padding: 20rem; 
+  /* background-image: url("https://verbanoviaggi.com/wp-content/uploads/2017/12/istockphoto-636879522-170667a.jpg"); */
+  background-repeat: no-repeat ;
+  background-size: 100% 100%;
+  background-position: 50% 50%;
+  box-shadow: 1px 1px 4px 0px  #888888;
+  border-radius: 30px;
+  
+  
+ }
+ imageBody{
+  background-color:#B1DAFF; 
+  display:grid;
+  border-radius: 40px;
+  margin-right: 0px;
+  margin-left: 40px;
+  box-shadow: 5px 10px  #888888;
+  height: 50vh;
+  align-items: center;
+  padding: 10px;
+ }
+  
